@@ -9,7 +9,7 @@ function Letras() {
 
     return (
         <div className="listaLetras">
-            {alfabeto.map(a => <button onClick={escolherLetra} disabled className="letra" key={a}>{a}</button>)}
+            {alfabeto.map(a => <button data-test="letter" onClick={escolherLetra} disabled={true} className="letra" key={a}>{a}</button>)}
         </div>
     );
 }

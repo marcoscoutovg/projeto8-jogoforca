@@ -2,15 +2,20 @@
 
 
 function Jogo() {
+
+    function iniciarJogo(linhas) {
+
+    }
+
     return (
         <div className="jogo">
             <div className="esquerda">
-                <img className="forca" src="./assets/img/forca0.png" alt="forca" />
+                <img data-test="game-image" className="forca" src="./assets/img/forca0.png" alt="forca" />
             </div>
             
             <div className="direita">
-                <button className="iniciarJogo"><p className="textoBotao">Escolher Palavra</p></button>
-                <input type="text" className="linhas" disabled placeholder="_ _ _ _ _ _ _ _"/>
+                <button data-test="choose-word" onClick={iniciarJogo} className="iniciarJogo"><p className="textoBotao">Escolher Palavra</p></button>
+                <input data-test="word" type="text" className="linhas" disabled={true} placeholder=""/>
             </div>
 
         </div>
