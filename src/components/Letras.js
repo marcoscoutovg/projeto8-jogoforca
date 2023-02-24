@@ -5,7 +5,8 @@ function Letras({escolherPalavra, setEscolherPalavra}) {
 
     return (
         <div className="listaLetras">
-            {alfabeto.map(a => <button data-test="letter" onClick={() => alert('oi')} disabled={escolherPalavra} className="letra" key={a}>{a}</button>)}
+            {alfabeto.map(a => 
+            <button data-test="letter" onClick={() => alert('oi')} disabled={escolherPalavra} className={`letra ${(!escolherPalavra && "ativado")}`} key={a}>{a.toUpperCase()}</button>)}
         </div>
     );
 }
