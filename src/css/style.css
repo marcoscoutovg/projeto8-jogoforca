@@ -67,6 +67,14 @@
     border: none;
 }
 
+.verde {
+    color: green;
+}
+
+.vermelho {
+    color: red;
+}
+
 .listaLetras {
     width: 700px;
     height: 100px;

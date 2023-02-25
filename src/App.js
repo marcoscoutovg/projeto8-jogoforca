@@ -5,7 +5,6 @@ import "./css/reset.css";
 import "./css/style.css";
 import { useState } from "react";
 
-
 function App() {
 
   const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
@@ -16,7 +15,8 @@ function App() {
   const [escolherPalavra, setEscolherPalavra] = useState(true);
   const [letraSelecionada, setLetraSelecionada] = useState([]);
   const [erros, setErros] = useState(0);
-  const [letrasCertas, setLetrasCertas] = useState(palavras[0]);
+  const [cor, setCor] = useState('');
+  const [desativarBotao, setDesativarBotao] = useState(true);
 
 
   return (
@@ -28,10 +28,11 @@ function App() {
         arrayUnderline={arrayUnderline}
         setArrayUnderline={setArrayUnderline}
         erros={erros}
+        cor={cor}
+        setDesativarBotao={setDesativarBotao}
       />
 
       <Letras
-        escolherPalavra={escolherPalavra}
         letraSelecionada={letraSelecionada}
         setLetraSelecionada={setLetraSelecionada}
         palavraSorteada={palavraSorteada}
@@ -39,6 +40,9 @@ function App() {
         erros={erros}
         setErros={setErros}
         alfabeto={alfabeto}
+        setCor={setCor}
+        desativarBotao={desativarBotao}
+        setDesativarBotao={setDesativarBotao}
       />
     </div>
   );
