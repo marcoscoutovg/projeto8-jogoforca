@@ -8,27 +8,37 @@ import { useState } from "react";
 
 function App() {
 
-  const [palavraSorteada, setPalavraSorteada] = useState(palavras[0].split(""));
-  const [arrayUnderline, setArrayUnderline] = useState([...palavraSorteada]);
-  const [escolherPalavra, setEscolherPalavra] = useState(true);
-  const [imagemForca, setImagemForca] = useState('../assets/img/forca0.png');
-  const [palavraEscolhida, setPalavraEscolhida] = useState([]);
+  const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
+    "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-  const erros = 0;
+  const [palavraSorteada, setPalavraSorteada] = useState(palavras[0].split(""));
+  const [arrayUnderline, setArrayUnderline] = useState([]);
+  const [escolherPalavra, setEscolherPalavra] = useState(true);
+  const [letraSelecionada, setLetraSelecionada] = useState([]);
+  const [erros, setErros] = useState(0);
+  const [letrasCertas, setLetrasCertas] = useState(palavras[0]);
+
 
   return (
     <div className="container">
       <Jogo
         escolherPalavra={escolherPalavra}
         setEscolherPalavra={setEscolherPalavra}
-        palavraEscolhida={palavraEscolhida}
-        setPalavraEscolhida={setPalavraEscolhida} 
         palavraSorteada={palavraSorteada}
-        arrayUnderline={arrayUnderline}/>
+        arrayUnderline={arrayUnderline}
+        setArrayUnderline={setArrayUnderline}
+        erros={erros}
+      />
 
       <Letras
         escolherPalavra={escolherPalavra}
-        setEscolherPalavra={setEscolherPalavra}
+        letraSelecionada={letraSelecionada}
+        setLetraSelecionada={setLetraSelecionada}
+        palavraSorteada={palavraSorteada}
+        setArrayUnderline={setArrayUnderline}
+        erros={erros}
+        setErros={setErros}
+        alfabeto={alfabeto}
       />
     </div>
   );
@@ -39,6 +49,6 @@ function sortearPalavra() {
 }
 
 palavras.sort(sortearPalavra);
-console.log(palavras[0])
+console.log('palavra que foi sorteada -', palavras[0])
 
 export default App;

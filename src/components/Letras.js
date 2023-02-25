@@ -1,12 +1,26 @@
-function Letras({escolherPalavra, setEscolherPalavra}) {
+function Letras({ escolherPalavra, palavraSorteada, letraSelecionada,
+    setLetraSelecionada, setArrayUnderline, erros, setErros,
+    alfabeto }) {
 
-    const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
-    "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    function clicouLetra(letra) {
+        
+        const novaLetraSelecionada = [...letraSelecionada, letra]
+        const novoUnder = [...palavraSorteada].map(n => novaLetraSelecionada.includes(n) ? n : "_ ")
+
+        setLetraSelecionada(novaLetraSelecionada);
+
+        (palavraSorteada.includes(letra) ? setArrayUnderline(novoUnder) : setErros(erros + 1));
+    }
 
     return (
         <div className="listaLetras">
-            {alfabeto.map(a => 
-            <button data-test="letter" onClick={() => alert('oi')} disabled={escolherPalavra} className={`letra ${(!escolherPalavra && "ativado")}`} key={a}>{a.toUpperCase()}</button>)}
+            {alfabeto.map(a =>
+                <button data-test="letter" onClick={() => clicouLetra(a)}
+                    disabled={(!letraSelecionada.includes(a) ? escolherPalavra : letraSelecionada.includes(a))}
+                    className={`letra ${(!letraSelecionada.includes(a) && !escolherPalavra && "ativado")}`}
+                    key={a}>
+                    {a.toUpperCase()}
+                </button>)}
         </div>
     );
 }
