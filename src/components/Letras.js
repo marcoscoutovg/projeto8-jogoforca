@@ -1,29 +1,32 @@
 function Letras({ palavraSorteada, letraSelecionada,
     setLetraSelecionada, setArrayUnderline, erros, setErros,
-    alfabeto, setCor, desativarBotao, setDesativarBotao }) {
+    alfabeto, setCor, desativarBotao, setDesativarBotao, sortearPalavra, palavras,
+    setPalavraSorteada }) {
 
     function clicouLetra(letra) {
 
-        const errosAtualizados = erros + 1;
         const novaLetraSelecionada = [...letraSelecionada, letra];
         const novoUnder = [...palavraSorteada].map(n => novaLetraSelecionada.includes(n) ? n : "_ ");
 
         setLetraSelecionada(novaLetraSelecionada);
 
-        (palavraSorteada.includes(letra) ? setArrayUnderline(novoUnder) : setErros(errosAtualizados));
-        
+        (palavraSorteada.includes(letra) ? setArrayUnderline(novoUnder) : setErros(++erros));
         function VerificaGanhaJogo() {
             if (novoUnder.toString() === palavraSorteada.toString()) {
                 setCor('verde');
                 setDesativarBotao(true);
+                palavras.sort(sortearPalavra);
+                setPalavraSorteada(palavras[0]);
             }
         }
 
         function VerificaPerdeJogo() {
-            if (errosAtualizados >= 6) {
+            if (erros >= 6) {
                 setCor('vermelho');
                 setArrayUnderline(palavraSorteada);
                 setDesativarBotao(true);
+                palavras.sort(sortearPalavra);
+                setPalavraSorteada(palavras[0]);
             }
         }
 

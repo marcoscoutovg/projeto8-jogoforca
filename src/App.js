@@ -18,18 +18,22 @@ function App() {
   const [cor, setCor] = useState('');
   const [desativarBotao, setDesativarBotao] = useState(true);
 
-
   return (
     <div className="container">
       <Jogo
         escolherPalavra={escolherPalavra}
         setEscolherPalavra={setEscolherPalavra}
         palavraSorteada={palavraSorteada}
+        setPalavraSorteada={setPalavraSorteada}
         arrayUnderline={arrayUnderline}
         setArrayUnderline={setArrayUnderline}
         erros={erros}
+        setErros={setErros}
         cor={cor}
+        setCor={setCor}
         setDesativarBotao={setDesativarBotao}
+        palavras={palavras}
+        setLetraSelecionada={setLetraSelecionada}
       />
 
       <Letras
@@ -43,6 +47,9 @@ function App() {
         setCor={setCor}
         desativarBotao={desativarBotao}
         setDesativarBotao={setDesativarBotao}
+        sortearPalavra={sortearPalavra}
+        palavras={palavras}
+        setPalavraSorteada={setPalavraSorteada}
       />
     </div>
   );
@@ -53,6 +60,5 @@ function sortearPalavra() {
 }
 
 palavras.sort(sortearPalavra);
-console.log('palavra que foi sorteada -', palavras[0])
 
 export default App;

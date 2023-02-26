@@ -6,15 +6,33 @@ import forca4 from '../assets/img/forca4.png';
 import forca5 from '../assets/img/forca5.png';
 import forca6 from '../assets/img/forca6.png';
 
-function Jogo({ escolherPalavra, setEscolherPalavra, palavraSorteada, arrayUnderline,
-    setArrayUnderline, erros, cor, setDesativarBotao }) {
+function Jogo({ escolherPalavra, setEscolherPalavra, palavraSorteada, setPalavraSorteada,
+    arrayUnderline, setArrayUnderline, erros, setErros, cor, setCor, setDesativarBotao,
+    palavras, setLetraSelecionada }) {
 
     const imagens = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 
     function iniciarJogo() {
+
+        reiniciarJogo();
+
         setEscolherPalavra(false);
         setArrayUnderline([...palavraSorteada].fill("_ "));
         setDesativarBotao(false);
+        setCor('preto');
+        setErros(0);
+    }
+
+    function reiniciarJogo() {
+        if (cor === 'verde' || cor === 'vermelho') {
+            setEscolherPalavra(false);
+            setPalavraSorteada(palavras[0].split(""));
+            setArrayUnderline([palavraSorteada].fill(""));
+            setEscolherPalavra(true);
+            setLetraSelecionada([]);
+            setErros(0);
+            setCor('');
+        }
     }
 
     return (
@@ -27,7 +45,6 @@ function Jogo({ escolherPalavra, setEscolherPalavra, palavraSorteada, arrayUnder
                 <button data-test="choose-word" onClick={iniciarJogo} className="iniciarJogo"><p className="textoBotao">Escolher Palavra</p></button>
                 <div data-test="word" className={`linhas ${cor}`}>{(!escolherPalavra && arrayUnderline)}</div>
             </div>
-
         </div>
     );
 }
