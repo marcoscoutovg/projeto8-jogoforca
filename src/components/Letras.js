@@ -7,6 +7,7 @@ function Letras({ palavraSorteada, letraSelecionada,
 
         const novaLetraSelecionada = [...letraSelecionada, letra];
         const novoUnder = [...palavraSorteada].map(n => novaLetraSelecionada.includes(n) ? n : "_ ");
+        const errosMaximos = 6;
 
         setLetraSelecionada(novaLetraSelecionada);
 
@@ -21,7 +22,7 @@ function Letras({ palavraSorteada, letraSelecionada,
         }
 
         function VerificaPerdeJogo() {
-            if (erros >= 6) {
+            if (erros >= errosMaximos) {
                 setCor('vermelho');
                 setArrayUnderline(palavraSorteada);
                 setDesativarBotao(true);

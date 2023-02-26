@@ -19,8 +19,6 @@ function Jogo({ escolherPalavra, setEscolherPalavra, palavraSorteada, setPalavra
         setEscolherPalavra(false);
         setArrayUnderline([...palavraSorteada].fill("_ "));
         setDesativarBotao(false);
-        setCor('preto');
-        setErros(0);
     }
 
     function reiniciarJogo() {
@@ -45,6 +43,7 @@ function Jogo({ escolherPalavra, setEscolherPalavra, palavraSorteada, setPalavra
                 <button data-test="choose-word" onClick={iniciarJogo} className="iniciarJogo"><p className="textoBotao">Escolher Palavra</p></button>
                 <div data-test="word" className={`linhas ${cor}`}>{(!escolherPalavra && arrayUnderline)}</div>
             </div>
+
         </div>
     );
 }
